@@ -1,0 +1,12 @@
+<launch>
+
+  <arg name="config" default="$(find path_generator_ros_tool)/launch/params/path_generator_parameters.yaml" />
+  <arg name="file" doc="speicfy the bag file name"/>
+
+  <node pkg="path_generator_ros_tool" type="path_generator" name="path_generator" output="screen">
+    <rosparam command="load" file="$(arg config)"/>
+    <param name="bag_file_name" value="$(arg file)" />
+    <param name="path_to_map" value="$(find path_generator_ros_tool)/res/" />
+  </node>
+
+</launch>

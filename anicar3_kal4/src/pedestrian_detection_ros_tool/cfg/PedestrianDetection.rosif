@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+"""
+Add your desired parameters here. All required headers will be generated from this.
+!!!IMPORTANT this file must be executable !!!
+
+Use one of these commands to add parameters to your parameter struct:
+
+def add(self, name, paramtype, description, level=0, edit_method='""', default=None, min=None, max=None, configurable=False, global_scope=False, constant=False):
+        Adds parameters to your parameter struct.
+
+def add_enum(self, name, description, entry_strings, default=None, paramtype='int'):
+        Adds an enum to dynamic reconfigure
+
+def add_group(self, name):
+        Create a parameter group for the dynamic_reconfigure window
+
+def add_publisher(self, name, message_type, description, default_topic=None, default_queue_size=5, topic_param=None,
+                  queue_size_param=None, header=None, module=None, configurable=False, scope="private",
+                  constant=False, diagnosed=False, min_frequency=0., min_frequency_param=None, max_delay=float('inf'),
+                  max_delay_param=None):
+        Adds an initialized publisher to your parameter struct and parameter for its topic and queue size.
+        Diagnosed publishers require the line: gen.add_diagnostic_updater().
+
+
+def add_subscriber(self, name, message_type, description, default_topic=None, default_queue_size=5, no_delay=False,
+                   topic_param=None, queue_size_param=None, header=None, module=None, configurable=False,
+                   scope='private', constant=False, diagnosed=False, min_frequency=0., min_frequency_param=None,
+                   max_delay=float('inf'), max_delay_param=None):
+        Adds an initialized subscriber to your parameter struct and parameters for topic and queue size.
+        Diagnosed subscribers require the line: gen.add_diagnostic_updater().
+
+
+For more information on the API, see here: https://gitlab.mrt.uni-karlsruhe.de/MRT/rosinterface_handler/blob/master/doc/HowToWriteYourFirstInterfaceFile.md
+"""
+from rosinterface_handler.interface_generator_catkin import *
+
+gen = InterfaceGenerator()
+
+# Add a parameter for changing verbosity (=log level) on the fly
+gen.add_verbosity_param(configurable=True)
+
+# Your Params here
+gen.add("mask_size", paramtype='int', description="mask size for opening and closing", default = 3,min=3,max=20,configurable=True,global_scope=False)
+gen.add("recognize_area_min", paramtype='int', description="recognize only if the area over this value", default = 400,min=0,max=10000,configurable=True,global_scope=False)
+gen.add("recognize_area_max", paramtype='int', description="recognize only if the area under this value", default = 30000,min=0,max=100000,configurable=True,global_scope=False)
+gen.add("open_num", paramtype='int', description="how many times to do opening operation", default = 1,min=1,max=10,configurable=True,global_scope=False)
+gen.add("close_num", paramtype='int', description="how many times to do closing operation", default = 7,min=1,max=10,configurable=True,global_scope=False)
+gen.add("ground_distance", paramtype='double', description="ground error (m)", default = 0.08,min=0,max=1,configurable=True,global_scope=False)
+gen.add("too_far", paramtype='double', description="too far away from interesting district (m)", default = 1.9,min=1,max=5,configurable=True,global_scope=False)
+gen.add("pro_noi", paramtype='double', description="processNoiseCov. of Kalman Filter", default = 0.001,min=0,max=100,configurable=True,global_scope=False)
+gen.add("mea_noi", paramtype='double', description="MeasurementNoiseCov. of Kalman Filter", default = 5,min=0,max=100,configurable=True,global_scope=False)
+gen.add("zebra_y_min", paramtype='double', description="range of zebra crossing in world frame (min)", default = 5.1,min=4,max=7,configurable=True,global_scope=False)
+gen.add("zebra_y_max", paramtype='double', description="range of zebra crossing in world frame (max)", default = 6.1,min=4,max=7,configurable=True,global_scope=False)
+gen.add("confidence_value", paramtype='double', description="confidence value of HOG_detection", default = -0.2,min=-1,max=1,configurable=True,global_scope=False)
+gen.add("range_y_max", paramtype='double', description="range of detection field crossing in world frame (max)", default = 6.5,min=4,max=7,configurable=True,global_scope=False)
+gen.add("range_y_min", paramtype='double', description="range of detection field crossing in world frame (min)", default = 4.5,min=4,max=7,configurable=True,global_scope=False)
+gen.add("range_x_max", paramtype='double', description="range of detection field crossing in world frame (max)", default = 10,min=7,max=15,configurable=True,global_scope=False)
+gen.add("range_x_min", paramtype='double', description="range of detection field crossing in world frame (min)", default = 8.5,min=7,max=15,configurable=True,global_scope=False)
+gen.add("hog_path",paramtype='std::string',description="path of trained HOG_SVM file",default="")
+
+
+# Publisher and subscriber (group name will show up in dynamic_reconfigure window)
+pub_sub = gen.add_group("Publisher and subscriber")
+pub_sub.add_subscriber("dummy_subscriber", message_type="std_msgs::Header", description="example subscriber", default_topic="in_topic", no_delay=True, configurable=True)
+pub_sub.add_publisher("dummy_publisher", message_type="std_msgs::Header", description="example publisher", default_topic="out_topic", configurable=True)
+
+
+# DO NOT TOUCH THIS LINE
+#Syntax : Package, Node, Config Name(The final name will be PedestrianDetectionConfig)
+exit(gen.generate("pedestrian_detection_ros_tool", "pedestrian_detection", "PedestrianDetection"))

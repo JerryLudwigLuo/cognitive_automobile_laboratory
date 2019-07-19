@@ -1,0 +1,41 @@
+# Use this file to specify parameters, that do not have default values.
+# YAML Files can also be helpful if you want to save parameters for different use-cases.
+# In any way: Default values should go into the .if file!
+#
+# To generate a yaml file, use "rosrun rosinterface_handler generate_yaml /path/to/PathPublisher.if"
+#
+# Use 'key: value' pairs, e.g.
+# string: 'foo'
+# integer: 1234
+# float: 1234.5
+# boolean: true
+# vector: [1.0, 2.0, 3.4]
+# map: {"a": "b", "c": "d"}
+
+verbosity: debug
+episode_service: /reset_episode
+map_name: fitted_road_map.osm
+center_x: 3.0
+center_y: 5.0
+radius_noise: 0.3
+just_straightway: False
+rotation_noise: 10
+shift_noise: 0.05
+timer_rate: 100
+delta_sigma: 0.005
+stuck_time: 10
+BB_left_bottom_x: 0.
+BB_left_bottom_y: 0.
+BB_top_right_x: 10.
+BB_top_right_y: 10.
+rendering: True
+
+
+# following are env sensitive parameters
+mode: test
+env: anicar
+frame_id_map: world
+frame_id_vehicle: vehicle_front_axle
+least_points: 10
+local_scope: 2       #local scope in real world (m); local_scope / point_distance should be equal to 100
+point_distance: 0.02    #lager than the value in path generator(old 0.02)

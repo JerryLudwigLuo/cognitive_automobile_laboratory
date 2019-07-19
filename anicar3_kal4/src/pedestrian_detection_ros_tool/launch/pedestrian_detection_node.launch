@@ -1,0 +1,10 @@
+<launch>
+
+  <arg name="config" default="$(find pedestrian_detection_ros_tool)/launch/params/pedestrian_detection_parameters.yaml" />
+
+  <node pkg="pedestrian_detection_ros_tool" type="pedestrian_detection" name="pedestrian_detection" output="screen">
+    <rosparam command="load" file="$(arg config)"/>
+    <param name="hog_path" value="$(find pedestrian_detection_ros_tool)/src/pedestrian_detection/HOG_SVM.xml" />
+  </node>
+
+</launch>

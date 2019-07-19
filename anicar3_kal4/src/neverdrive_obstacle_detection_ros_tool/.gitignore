@@ -1,0 +1,6 @@
+*~
+setup.py
+*.pyc
+CMakeLists.txt.user
+# ignore launch file 
+*.launch

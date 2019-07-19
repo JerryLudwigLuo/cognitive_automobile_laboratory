@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>road_map</name>
+  <version>0.0.0</version>
+  <description>Library for opening and editing trajectory-based .osm maps (RoadMap)</description>
+
+  <license>internal - -</license>
+  <maintainer email="piotr.orzechowski@kit.edu">Piotr Orzechowski</maintainer>
+  <author email="strauss@kit.edu">Tobias Strauß</author>
+  <url type="repository">git@gitlab.mrt.uni-karlsruhe.de:MRT/road_map.git</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>mrt_cmake_modules</build_depend>
+  <!-- 
+    Documentation for dependencies:
+    <build_depend>            Build-time dependency required to build 
+                              this package, e.g. boost, opencv.
+    <build_export_depend>     Exported build-time dependency required to 
+                              build packages that depend on this package,
+                              e.g. boost, opencv.
+    <exec_depend>             Execution dependency required to run this 
+                              package, e.g. boost, opencv.
+    <depend>                  Build-time, exported build-time and execution
+                              dependency. This is a bundled synonym for
+                              <build_depend>, <build_export_depend> and
+                              <exec_depend>.
+  -->
+  <depend>gnss_coordinate_transform</depend>
+  <depend>mrt_ann</depend>
+  <depend>boost</depend>
+  <depend>osm</depend>
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

@@ -1,0 +1,6 @@
+<library path="lib/libpedestrian_detection_nodelet">
+<class name="pedestrian_detection_ros_tool/PedestrianDetectionNodelet"
+       type="pedestrian_detection_ros_tool::PedestrianDetectionNodelet" base_class_type="nodelet::Nodelet">
+  <description></description>
+</class>
+</library>

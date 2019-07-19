@@ -1,0 +1,6 @@
+<launch>
+
+    <test test-name="pedestrian_detection_nodelet_test" pkg="pedestrian_detection_ros_tool" type="pedestrian_detection_nodelet-test" time-limit="60.0"/>
+    <include file="$(find pedestrian_detection_ros_tool)/launch/pedestrian_detection_nodelet.launch"/>
+</launch>
+

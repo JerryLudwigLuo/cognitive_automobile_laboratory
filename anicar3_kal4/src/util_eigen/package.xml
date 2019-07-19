@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>util_eigen</name>
+  <version>1.0.0</version>
+  <description>Eigen utilities.</description>
+
+  <license>GPLv3</license>
+  <maintainer email="johannes.graeter@kit.edu">Johannes Graeter</maintainer>
+  <author email="johannes.graeter@kit.edu">Johannes Graeter</author>
+  <url type="repository">https://gitlab.mrt.uni-karlsruhe.de/MRT/util_eigen.git</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>mrt_cmake_modules</build_depend>
+  <test_depend>gtest</test_depend>
+
+  <depend>eigen</depend>
+</package>

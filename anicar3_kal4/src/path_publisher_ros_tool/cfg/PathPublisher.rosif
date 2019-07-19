@@ -1,0 +1,95 @@
+#!/usr/bin/env python
+"""
+Add your desired parameters here. All required headers will be generated from this.
+!!!IMPORTANT this file must be executable !!!
+
+Use one of these commands to add parameters to your parameter struct:
+
+def add(self, name, paramtype, description, level=0, edit_method='""', default=None, min=None, max=None, configurable=False, global_scope=False, constant=False):
+        Adds parameters to your parameter struct.
+
+def add_enum(self, name, description, entry_strings, default=None, paramtype='int'):
+        Adds an enum to dynamic reconfigure
+
+def add_group(self, name):
+        Create a parameter group for the dynamic_reconfigure window
+
+def add_publisher(self, name, message_type, description, default_topic="", default_queue_size=5, topic_param=None,
+                  queue_size_param=None, header=None, module=None, configurable=False, scope='private',
+                  constant=False):
+        Adds an initialized publisher to your parameter struct and parameter for its topic and queue size
+
+def add_subscriber(self, name, message_type, description, default_topic="", default_queue_size=5, no_delay=False,
+                   topic_param=None, queue_size_param=None, header=None, module=None, configurable=False,
+                   scope='private', constant=False):
+        Adds an initialized subscriber to your parameter struct and parameters for topic and queue size.
+
+
+For more information on the API, see here: https://gitlab.mrt.uni-karlsruhe.de/MRT/rosinterface_handler/blob/master/doc/HowToWriteYourFirstInterfaceFile.md
+"""
+from rosinterface_handler.interface_generator_catkin import *
+
+gen = InterfaceGenerator()
+
+# Add a parameter for changing verbosity (=log level) on the fly
+gen.add_verbosity_param(configurable=True)
+
+# Your Params here
+gen.add("robot_task", paramtype='int', description="to active robot task", default=0, min=0, max=1,configurable=True, global_scope=False)
+gen.add("go_back_iter_dist", paramtype='int', description=" ", default=0, min=0, max=100,configurable=True, global_scope=False)
+gen.add("go_back_dist", paramtype='double', description=" ", default=0.7, min=0, max=3.0,configurable=True, global_scope=False)
+gen.add("dist_to_path", paramtype='double', description="box distance to path that need to avoiding", default=0.4, min=0.0, max=1.0, configurable=True, global_scope=False)
+gen.add("exit_active", paramtype='int', description="to active go exit or not", default=1, min=0, max=1,
+        configurable=True, global_scope=False)
+gen.add("time_to_go_back", paramtype='double', description="time to go back from avoiding obstacles", default=3.0, min=0.0, max=10.0, configurable=True, global_scope=False)
+
+gen.add("actual_map", paramtype='int', description="number of actual map", default=1, min=1, max=8, configurable=True, global_scope=False)
+gen.add("wanted_map", paramtype='int', description="number of map wanted", default=1, min=1, max=8, configurable=True, global_scope=False)
+gen.add("near_center_distance", paramtype='double', description="the distance to decide near center or not", default=2.2, min=0, max=8, configurable=True, global_scope=False)
+#gen.add("sign", paramtype='int', description="detected sign: NO_SIGN, LEFT_SIGN, RIGHT_SIGN", default=0, min=-1, max=1, configurable=True)
+gen.add("exit_area_x_max", paramtype='double', description="threshold of exit area, x max", default=12.0, min=7, max=13, configurable=True, global_scope=False)
+gen.add("exit_area_x_min", paramtype='double', description="threshold of exit area, x min", default=9.0, min=7, max=13, configurable=True, global_scope=False)
+gen.add("exit_area_y_max", paramtype='double', description="threshold of exit area, y max", default=3.0, min=0, max=3.0, configurable=True, global_scope=False)
+gen.add("exit_area_y_min", paramtype='double', description="threshold of exit area, y max", default=0.0, min=0.0, max=3.0, configurable=True, global_scope=False)
+
+
+gen.add("timer_rate", paramtype='double', description="publisher frequency", default=50, min=0, max=100, configurable=True, global_scope=False)
+gen.add("kos_shift", paramtype='double', description="distance from vehicle frame id referred position to real vehicle center point", default=-0.4, min=-0.5, max=0.5, configurable=True, global_scope=False)
+gen.add("delta_sigma", paramtype='double', description="delta angle to generate sample path", default=0.01, min=0, max=0.1, configurable=True, global_scope=False)
+gen.add("path_to_map", paramtype='std::string', description="directory to map file", default="")
+gen.add("mode", paramtype='std::string', description="mode of path publisher, train or test")
+gen.add("env", paramtype='std::string', description="run on anicar or simulator")
+gen.add("just_straightway", paramtype='bool', description="just publish straight path", default=True)
+gen.add("rendering", paramtype='bool', description="show path image or not", default=False)
+gen.add("map_name", paramtype='std::string', description="file name of map", default="")
+gen.add("reset_episode_service_name", paramtype='std::string', description="name of service", default="/reset_episode")
+gen.add("frame_id_map", paramtype='std::string', description="Map frame ID", default="map")
+gen.add("frame_id_vehicle", paramtype='std::string', description="Vehicle frame ID", default="vehicle")
+gen.add("center_x", paramtype='double', description="x axis value of center point of map", default=0.0, min=0, max=15, configurable=True, global_scope=False)
+gen.add("center_y", paramtype='double', description="y axis value of center point of map", default=0.0, min=0, max=15, configurable=True, global_scope=False)
+gen.add("path_length", paramtype='double', description="length of a published path", default=4.5, min=1, max=10, configurable=True, global_scope=False)
+gen.add("drive_distance", paramtype='double', description="drive distance before update path", default=0.1, min=0.1, max=3, configurable=True, global_scope=False)
+gen.add("point_distance", paramtype='double', description="distance between two points", default=0.02, min=0.005, max=0.5, configurable=True, global_scope=False)
+gen.add("radius_noise", paramtype='double', description="standard deviation of noise to radius when generate sample map", default=0.2, min=0, max=0.5, configurable=True, global_scope=False)
+gen.add("rotation_noise", paramtype='double', description="standard deviation of noise to rotation when process sample map", default=10, min=0, max=20, configurable=True, global_scope=False)
+gen.add("shift_noise", paramtype='double', description="standard deviation of noise to lateral shift base on anicar scale", default=0.5, min=0, max=1, configurable=True, global_scope=False)
+gen.add("local_scope", paramtype='double', description="real world width and height of local area", default=2, min=0, max=50, configurable=True, global_scope=False)
+gen.add("least_points", paramtype='int', description="least points in image area", default=10, min=0, max=500, configurable=True, global_scope=False)
+gen.add("stuck_time", paramtype='double', description="max limited time the vehicle allowed to path through the path", default=10, min=0, max=20, configurable=True, global_scope=False)
+gen.add("BB_left_bottom_x", paramtype='double', description="position of left bottom corner of boundary", default=0, configurable=True, global_scope=False)
+gen.add("BB_left_bottom_y", paramtype='double', description="position of left bottom corner of boundary", default=0, configurable=True, global_scope=False)
+gen.add("BB_top_right_x", paramtype='double', description="position of top right corner of boundary", default=10, configurable=True, global_scope=False)
+gen.add("BB_top_right_y", paramtype='double', description="position of top right corner of boundary", default=10, configurable=True, global_scope=False)
+gen.add("road_length", paramtype='double', description="the length of sampling path in train mode when sampling path from osm file", default=10, configurable=True, global_scope=False)
+
+# Publisher and subscriber (group name will show up in dynamic_reconfigure window)
+pub_sub = gen.add_group("Publisher and subscriber")
+#pub_sub.add_subscriber("sign_subscriber", message_type="std_msgs::String", description="example subscriber", default_topic="/sign_out_topic", no_delay=True, configurable=True)
+pub_sub.add_publisher("path_publisher", message_type="nav_msgs::Path", description="path publisher", default_topic="/path", configurable=True, min_frequency=6)
+pub_sub.add_publisher("task_publisher", message_type="std_msgs::Int8", description="task publisher", default_topic="/current_task", configurable=True, min_frequency=6)
+
+
+
+# DO NOT TOUCH THIS LINE
+#Syntax : Package, Node, Config Name(The final name will be PathPublisherConfig)
+exit(gen.generate("path_publisher_ros_tool", "path_publisher", "PathPublisher"))

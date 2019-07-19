@@ -1,0 +1,71 @@
+<launch>
+
+  <!-- Arguments -->
+  <arg name="car_name" default="$(env CAR_NAME)" doc="Set the CAR_NAME environment variable to 'anicar2' or 'anicar3' prior to starting this launch file" />
+
+
+<include file="$(find vehicle_setup)/launch/camera_top.launch" />
+  <include file="$(find vehicle_setup)/launch/localization.launch" />
+
+  <include file="$(find vehicle_setup)/launch/urdf_publisher.launch" />
+
+ 
+
+
+ <include file="$(find motor_interface_ros_tool)/launch/motor_interface_node.launch" />
+
+
+<include file="$(find path_publisher_ros_tool)/launch/path_publisher_node.launch">
+
+ </include>
+
+
+
+  <include file="$(find joy_converter_ros_tool)/launch/joystick.launch" />
+
+
+  <include file="$(find anicar_lateral_control_ros_tool)/launch/lateral_controller_node.launch"/>
+  <include file="$(find anicar_longitudinal_control_ros_tool)/launch/longitudinal_controller_node.launch" />
+
+  <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch"/>
+
+ <include file="$(find neverdrive_obstacle_detection_ros_tool)/launch/obstacle_detection.launch"/>
+
+
+    <node pkg="neverdrive_traffic_cones_ros_tool" name="traffic_cones_detection" type="traffic_cones_detection" output="screen" />
+
+
+    
+
+    <node pkg="stop_sign_detector" name="stop" type="stop.py"/> 
+   <node pkg="direction_sign_detector" name="dir" type="dir.py"/> 
+
+    <node pkg="neverdrive_grid_map_ros_tool" name="grid_map_creation" type="grid_map_creation" />
+
+    <arg name="config" default="$(find path_publisher_ros_tool)/launch/params/path_planning_parameters.yaml" />
+
+    <node pkg="path_publisher_ros_tool" type="path_planning" name="path_planning" output="screen">
+        <rosparam command="load" file="$(arg config)"/>
+        <param name="exit_map_path" value="$(find path_publisher_ros_tool)/res/maps/"/>
+    </node>
+ 
+
+
+  <!-- Visualization -->
+  <include file="$(find stargazer_ros_tool)/launch/landmark_visualizer.launch" >
+    <arg name="start_rviz" value="false" />
+    <arg name="stargazer_config" value="$(find vehicle_setup)/launch/params/$(arg car_name)/stargazer_optimized.yaml"/>
+  </include>
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="trajectory_server" >
+    <param name="target_frame_name" type="string" value="world" />
+    <param name="source_frame_name" type="string" value="vehicle_front_axle" />
+    <param name="trajectory_update_rate" type="double" value="30.0" />
+    <param name="trajectory_publish_rate" type="double" value="30.0" />
+  </node>
+    <node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d $(find path_provider_ros_tool)/res/path_provider.rviz" />
+
+
+  <!-- Reconfiguration -->
+  <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"/>
+
+</launch>

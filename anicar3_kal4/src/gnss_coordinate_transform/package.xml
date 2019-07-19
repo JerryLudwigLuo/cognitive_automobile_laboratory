@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>gnss_coordinate_transform</name>
+  <version>0.0.0</version>
+  <description>ToDo: Edit package description</description>
+
+  <license>contact-the-maintainer</license>
+  <maintainer email="naumann@fzi.de">Maximilian Naumann</maintainer>
+  <author email="andre-marcel.hellmund@kit.edu">Andre-Marcel Hellmund</author>
+  <url type="repository">https://gitlab.mrt.uni-karlsruhe.de/MRT/gnss_coordinate_transform.git</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>mrt_cmake_modules</build_depend>
+  <test_depend>gtest</test_depend>
+
+  <depend>libgeographic-dev</depend>
+  <depend>boost-python</depend>
+  <!--
+    Documentation for dependencies:
+    <build_depend>            Build-time dependency required to build
+                              this package, e.g. boost, opencv.
+    <build_export_depend>     Exported build-time dependency required to
+                              build packages that depend on this package,
+                              e.g. boost, opencv.
+    <exec_depend>             Execution dependency required to run this
+                              package, e.g. boost, opencv.
+    <depend>                  Build-time, exported build-time and execution
+                              dependency. This is a bundled synonym for
+                              <build_depend>, <build_export_depend> and
+                              <exec_depend>.
+  -->
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

@@ -1,0 +1,30 @@
+<launch>
+
+  
+  <include file="$(find vehicle_setup)/launch/localization.launch" />
+
+  <include file="$(find vehicle_setup)/launch/urdf_publisher.launch" />
+
+  <include file="$(find motor_interface_ros_tool)/launch/motor_interface_node.launch" />
+
+  <include file="$(find joy_converter_ros_tool)/launch/joystick.launch" />
+
+  <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch"/>
+
+  <include file="$(find vehicle_setup)/launch/all_cameras.launch"/>
+  <!--node pkg="nodelet" type="nodelet" name="clean_points" args="standalone pcl/PassThrough">
+    <remap from="~input" to="/kinect2/sd/points"/>
+      <rosparam>
+        filter_field_name: z
+        filter_limit_min: 0.0
+        filter_limit_max: 4.0
+      </rosparam>
+  </node-->
+
+  <!-- Visualize -->
+  <include file="$(find vehicle_setup)/launch/start_visualization.launch" />
+  
+  <!-- Reconfiguration -->
+  <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"/>
+
+</launch>

@@ -1,0 +1,6 @@
+<library path="lib/libpath_generator_nodelet">
+<class name="path_generator_ros_tool/PathGeneratorNodelet"
+       type="path_generator_ros_tool::PathGeneratorNodelet" base_class_type="nodelet::Nodelet">
+  <description></description>
+</class>
+</library>

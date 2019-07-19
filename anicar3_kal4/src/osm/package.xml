@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>osm</name>
+  <version>1.0.0</version>
+  <description>Package for reading and writing osm files</description>
+
+  <license>GPLv3</license>
+  <maintainer email="fabian.poggenhans@kit.edu">Fabian Poggenhans</maintainer>
+  <author email="strauss@kit.edu">Tobias Strauß</author>
+  <url type="repository">git@gitlab.mrt.uni-karlsruhe.de:MRT/osm.git</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>mrt_cmake_modules</build_depend>
+  <depend>bbf_geometry</depend>
+  <depend>pugixml</depend>
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>
