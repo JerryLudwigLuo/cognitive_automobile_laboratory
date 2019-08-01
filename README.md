@@ -55,4 +55,4 @@ robot doesn't across the road
 
 robot is acrossing the road
 
-![robot_pass](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/robot2.gif)
+![robot_stop](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/robot2.gif)
