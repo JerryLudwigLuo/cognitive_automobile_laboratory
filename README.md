@@ -35,7 +35,7 @@ e.p. stop sign detector
 
 ![Traffic Sign Detector](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/sign.gif)
 
-## Obstecle Detection
+## Avoiding Obstecles
 
 ![avoiding box](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/box.gif)
 
