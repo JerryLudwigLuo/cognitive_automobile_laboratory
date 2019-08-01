@@ -1,4 +1,4 @@
-# Cognitive_Automobile_Laboratory 2019 in MRT Institute, Karlsruher Institut für Technologie (KIT), Germany
+# Cognitive Automobile Laboratory 2019 in MRT Institute, Karlsruher Institut für Technologie (KIT), Germany
 In [this laboratory](https://www.mrt.kit.edu/lehre_SS_Kognitive_Automobile_Labor.php) we should write programs in C++ and Python and use ROS to implemente algorithms for autonomous driving.
 
 During the compitition
