@@ -1,15 +1,17 @@
 # Cognitive_Automobile_Laboratory 2019 in MRT Institute, Karlsruher Institut für Technologie (KIT), Germany
 In [this laboratory](https://www.mrt.kit.edu/lehre_SS_Kognitive_Automobile_Labor.php) we should write programs in C++ and Python and use ROS to implemente algorithms for autonomous driving.
 
-During compitition
+During the compitition
 
 ![compitition video](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/compitition.gif)
 
 ## Team NeverDrive
 
 Perception part: Ossama Zenkri(traffic-sign detection), Jiawei Luo(pedestrian detection), Zhichong Xiao(obstecle detection), Xing Meng(pylon detection)
+
 Control part: Jiawei Luo(lateral and longitudinal control) Xing Meng(path generation)
-Our team won the champion of the compitition
+
+Our team won the champion of the compitition!
 
 ![champion](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/champion.jpg)
 
@@ -27,7 +29,9 @@ with PI controller
 
 ## Traffic-Sign Detection
 
-we used color filter and 4 CNNs as classifier for 4 kinds of traffic-signs(stop, go straight, turn left and turn right).
+We used color filter and 4 CNNs as classifier for 4 kinds of traffic-signs(stop, go straight, turn left and turn right).
+
+e.p. stop sign detector
 
 ![Traffic Sign Detector](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/sign.gif)
 
