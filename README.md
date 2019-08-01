@@ -45,7 +45,7 @@ with occupancy grid map and potential field to generate path in unknown environm
 
 ![grid map](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/pylon.gif)
 
-## Pedestrian(robot) Detection
+## Pedestrian(Robot) Detection
 
 After some image-processing, we used Connected Components Label(CCL) to get segments, calculate HOG features of ROI, and use SVM as classifier to get measurement's value of the robot. In order to getting more accurate position of the robot, the car can track the robot with kalman filter.
 
