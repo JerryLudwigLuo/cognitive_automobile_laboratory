@@ -17,7 +17,7 @@ Our team won the champion of the compitition!
 
 ## Lateral and Longitudinal Control
 
-Basing on [stanley controller](http://ai.stanford.edu/~gabeh/papers/hoffmann_stanley_control07.pdf) we also added PI controller to let the car drive more smoothly. Because the car has no brake, we used cosine function to make car stop or slow down front of stop-sign, pedestrian(robot) or obstacles without shifting and sliding.
+Basing on [stanley controller](http://ai.stanford.edu/~gabeh/papers/hoffmann_stanley_control07.pdf) we also added PI controller to let the car drive more smoothly. Because the car doesn't have brake, we used cosine function to make car stop or slow down in front of stop-sign, pedestrian(robot) or obstacles without shifting and sliding.
 
 without PI controller
 
