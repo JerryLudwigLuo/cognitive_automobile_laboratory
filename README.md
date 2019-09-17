@@ -7,10 +7,6 @@ During the compitition
 
 ## Team NeverDrive
 
-Perception part: Ossama Zenkri(traffic-sign detection), Jiawei Luo(pedestrian detection), Zhichong Xiao(obstecle detection), Xing Meng(pylon detection)
-
-Control part: Jiawei Luo(lateral and longitudinal control) Xing Meng(path generation)
-
 Our team won the champion of the compitition!
 
 ![champion](https://github.com/JerryLudwigLuo/cognitive_automobile_laboratory/blob/master/anicar3_kal4/image/champion.jpg)
